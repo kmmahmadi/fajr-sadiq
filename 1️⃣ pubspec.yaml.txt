@@ -1,0 +1,22 @@
+name: fajr_sadiq
+description: تطبيق الفجر الصادق
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.2
+  shared_preferences: ^2.2.2
+  syncfusion_flutter_pdfviewer: ^25.1.35
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/mushaf/mushaf.pdf
+    - assets/kfgqpc/hafs_db.json

@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class AppState extends ChangeNotifier {
+  static const _kLastPage = 'lastPage';
+  static const _kHud = 'hud';
+
+  int lastPage = 1;
+  bool hudEnabled = true;
+
+  Future<void> load() async {
+    final sp = await SharedPreferences.getInstance();
+    lastPage = sp.getInt(_kLastPage) ?? 1;
+    hudEnabled = sp.getBool(_kHud) ?? true;
+    notifyListeners();
+  }
+
+  Future<void> setLastPage(int p) async {
+    lastPage = p;
+    notifyListeners();
+    final sp = await SharedPreferences.getInstance();
+    await sp.setInt(_kLastPage, p);
+  }
+
+  Future<void> setHud(bool v) async {
+    hudEnabled = v;
+    notifyListeners();
+    final sp = await SharedPreferences.getInstance();
+    await sp.setBool(_kHud, v);
+  }
+}
